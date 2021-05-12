@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
 /**
 @Getter 					//getter 메서드
 @Setter						//setter 메서드
@@ -22,10 +21,12 @@ import lombok.ToString;
 */
 @Data				//lombok의 모든 annotation 선언과 같음
 public class BoardVO {
+	
 	private Long num;
 	private String title;
 	private String writer;
 	private String contents;
 	private Date regDate;
 	private Long hit;
+
 }
