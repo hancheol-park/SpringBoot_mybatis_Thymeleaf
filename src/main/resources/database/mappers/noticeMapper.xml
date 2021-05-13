@@ -3,7 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-   <mapper namespace="com.iu.s1.board.notice.NoticeMapper">
+   <mapper namespace="com.abc.s1.board.notice.NoticeMapper">
    		<sql id="searcher">
    		<!-- 공통으로 사용하는 sql문 -->
    		<where>
@@ -46,3 +46,4 @@
    		</insert>
    
    </mapper>
+    
