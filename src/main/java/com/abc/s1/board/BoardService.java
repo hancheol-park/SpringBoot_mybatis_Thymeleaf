@@ -19,4 +19,6 @@ public interface BoardService {
 
 	//Delete
 	public int setDelete(BoardVO boardVO)throws Exception;
+	
+
 }

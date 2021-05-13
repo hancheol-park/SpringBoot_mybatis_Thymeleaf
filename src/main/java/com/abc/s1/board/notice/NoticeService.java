@@ -10,7 +10,7 @@ import com.abc.s1.board.BoardVO;
 import com.abc.s1.util.Pager;
 
 @Service
-public class NoticeService implements BoardService{
+public class NoticeService implements BoardService {
 
 	@Autowired
 	private NoticeMapper noticeMapper;
@@ -49,4 +49,5 @@ public class NoticeService implements BoardService{
 	}
 	
 	
-}	
+
+}
