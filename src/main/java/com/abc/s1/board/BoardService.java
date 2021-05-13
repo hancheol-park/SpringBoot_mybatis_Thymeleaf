@@ -3,6 +3,7 @@ package com.abc.s1.board;
 import java.util.List;
 
 import com.abc.s1.util.Pager;
+import com.abc.s1.board.BoardVO;
 
 public interface BoardService {
 	//List

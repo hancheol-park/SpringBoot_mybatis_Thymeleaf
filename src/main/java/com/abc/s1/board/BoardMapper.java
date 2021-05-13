@@ -5,6 +5,7 @@ import java.util.List;
 import com.abc.s1.util.Pager;
 
 public interface BoardMapper {
+	
 	//List
 	public List<BoardVO> getList(Pager pager)throws Exception;
 	//count
@@ -19,4 +20,4 @@ public interface BoardMapper {
 	public int setHitUpdate(BoardVO boardVO)throws Exception;
 	//Delete
 	public int setDelete(BoardVO boardVO)throws Exception;
-}	
+}

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/qna/**")
 public class QnaController {
+	
 	@ModelAttribute("board")
 	public String getBoard() {
 		return "qna";
@@ -18,4 +19,5 @@ public class QnaController {
 	public String getList(Model model)throws Exception{
 		return "board/list";
 	}
+
 }
