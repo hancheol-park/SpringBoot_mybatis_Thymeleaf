@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.abc.s1.board.BoardVO;
@@ -29,6 +30,21 @@ public class NoticeController {
 		return "notice";
 	}
 	
+	// /notice/fileDown
+	@GetMapping("fileDown")
+	public ModelAndView fileDown(String fileName, String oriName)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("fileName", fileName);
+		mv.addObject("oriName", oriName);
+		mv.addObject("filePath", "/upload/notice/");
+		
+		// view의 이름은 Bean의 이름과 일치
+		mv.setViewName("down");
+		//  /fileDown.html
+		return mv;
+	}
+	
+	// /notice/list
 	@GetMapping("list")
 	public String getList(Model model, Pager pager)throws Exception{
 		List<BoardVO> ar = noticeService.getList(pager);
@@ -36,6 +52,8 @@ public class NoticeController {
 		model.addAttribute("pager", pager);
 		System.out.println(pager.getStartNum());
 		System.out.println(pager.getLastNum());
+		
+		// /board/list.html
 		return "board/list";
 	}
 	
@@ -49,13 +67,45 @@ public class NoticeController {
 	}
 	
 	@GetMapping("insert")
-	public String setInsert()throws Exception{
-		return "board/insert";
+	public String setInsert(Model model)throws Exception{
+		model.addAttribute("vo", new BoardVO());
+		model.addAttribute("action", "insert");
+		return "board/form";
 	}
 	
 	@PostMapping("insert")
-	public String setInsert(BoardVO boardVO)throws Exception{
-		int result = noticeService.setInsert(boardVO);
+	public String setInsert(BoardVO boardVO, MultipartFile [] files)throws Exception{
+//		System.out.println(files.length);
+//		for(MultipartFile f : files) {
+//			System.out.println(f.getOriginalFilename());
+//		}
+		
+		int result = noticeService.setInsert(boardVO, files);
+		
+		return "redirect:./list";
+	}
+	
+	@GetMapping("update")
+	public String setUpdate(BoardVO boardVO, Model model)throws Exception{
+		boardVO = noticeService.getSelect(boardVO);
+		model.addAttribute("vo", boardVO);
+		model.addAttribute("action", "update");
+		return "board/form";
+		
+	}
+	
+	@PostMapping("update")
+	public String setUpdate(BoardVO boardVO)throws Exception{
+		
+		int result = noticeService.setUpdate(boardVO);
+		
+		return "redirect:./list";
+	}
+	
+	@GetMapping("delete")
+	public String setDelete(BoardVO boardVO)throws Exception{
+		
+		int result = noticeService.setDelete(boardVO);
 		
 		return "redirect:./list";
 	}

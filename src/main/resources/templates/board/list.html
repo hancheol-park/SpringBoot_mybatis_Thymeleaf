@@ -1,3 +1,4 @@
+  
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="/fragments/default :: head(|${board}List|)">
@@ -79,8 +80,7 @@
 		   </tbody>
 		 </table> 
 		 
-		 
-		 
+		 <a href="#" class="btn btn-primary" th:href="@{./fileDown}">FileDown</a>
 		 <a href="#" class="btn btn-primary" th:href="@{./insert}">WRITE</a>
 	</div>
 	
