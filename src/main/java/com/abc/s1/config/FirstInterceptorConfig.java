@@ -5,16 +5,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.abc.s1.interceptor.WriterInterceptor;
+import com.abc.s1.interceptor.FirstInterceptor;
 
-public class WriterIntercepterConfig implements WebMvcConfigurer{
+@Configuration
+public class FirstInterceptorConfig implements WebMvcConfigurer{
 	@Autowired
-	private WriterInterceptor writerInterceptor;
+	private FirstInterceptor firstInterceptor;
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		// TODO Auto-generated method stub
-		registry.addInterceptor(writerInterceptor)
-				.addPathPatterns("/qna/update");
+		registry.addInterceptor(firstInterceptor)
+				.addPathPatterns("/notice/**")
+				.excludePathPatterns("/notice/select")
+				.order(1);
+				// 순서 결정
+				// 숫자가 낮을 수록 우선순위(먼저 실행)
+	
 	}
 }
