@@ -67,6 +67,7 @@ public class QnaController {
 		boardVO = qnaService.getSelect(boardVO);
 		model.addAttribute("vo", boardVO);
 		model.addAttribute("action", "update");
+		
 		return "board/form";
 		
 	}

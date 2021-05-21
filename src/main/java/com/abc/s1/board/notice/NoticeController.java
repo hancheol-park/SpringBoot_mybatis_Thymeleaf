@@ -70,25 +70,11 @@ public class NoticeController {
 		}
 		
 		@GetMapping("insert")
-		public String setInsert(Model model, HttpSession session)throws Exception{
+		public String setInsert(Model model)throws Exception{
 			model.addAttribute("vo", new BoardVO());
 			model.addAttribute("action", "insert");
 			
-			Object obj = session.getAttribute("member");
-			MemberVO memberVO = null;
-			String path="redirect:/member/login";
-			//if(obj != null) {}
-			if(obj instanceof MemberVO) {
-				memberVO = (MemberVO)obj;
-				
-				if(memberVO.getUsername().equals("admin")) {
-					path="board/form";
-				}
-			}	
-			
-			
-			
-			return path;
+			return "board/form";
 		}
 		
 		@PostMapping("insert")
